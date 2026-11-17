@@ -45,9 +45,9 @@ surface is ordinary Rust with one dispatch function
 ## Usage
 
 ```bash
-cargo run -p gitspin-cli -- provider-info --provider github
-cargo run -p gitspin-cli -- list-contributors --provider github --owner TechGodHQ --repo gitspin
-cargo run -p gitspin-cli -- list-commits --provider github --owner TechGodHQ --repo gitspin \
+cargo run -p gitspin-cli --bin gitspin -- provider-info
+cargo run -p gitspin-cli --bin gitspin -- list-contributors --provider github --owner TechGodHQ --repo gitspin
+cargo run -p gitspin-cli --bin gitspin -- list-commits --provider github --owner TechGodHQ --repo gitspin \
   --since 2026-01-01T00:00:00Z
 ```
 

@@ -1,9 +1,10 @@
 //! gitspin CLI library: the handwritten part of the hydra project.
 //!
 //! `api/operations.yaml` is the single source of truth; the committed
-//! artifacts under `generated/` are produced by `cargo run -p hydra-codegen
-//! -- write` and gated by `-- check` in CI. Every generated surface funnels
-//! into one dispatch: [`execute_operation`].
+//! artifacts under `generated/` are produced by `cargo run -p
+//! gitspin-codegen --bin gitspin-codegen -- write` and gated by `-- check` in
+//! CI. Every generated surface funnels into one dispatch:
+//! [`execute_operation`].
 
 use std::sync::Arc;
 

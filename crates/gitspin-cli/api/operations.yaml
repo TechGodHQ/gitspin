@@ -1,6 +1,6 @@
 # gitspin operations — single source of truth for CLI/HTTP/MCP projections.
-# Regenerate with: cd crates/gitspin-cli && cargo run -p hydra-codegen -- write
-# CI staleness gate: cargo run -p hydra-codegen -- check
+# Regenerate with: cd crates/gitspin-cli && cargo run -p gitspin-codegen --bin gitspin-codegen -- write
+# CI staleness gate: cargo run -p gitspin-codegen --bin gitspin-codegen -- check
 operations:
   - name: provider_info
     description: Report the active provider adapter and its capabilities.
