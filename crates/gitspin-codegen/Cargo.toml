@@ -1,0 +1,18 @@
+[package]
+name = "gitspin-codegen"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "Codegen shim: exposes hydra write/check for this repo. Run from crates/gitspin-cli."
+publish = false
+
+[lints]
+workspace = true
+
+# Hydra is the sole projection mechanism; pinned to the immutable v0.3.0 tag.
+[dependencies]
+hydra-core = { workspace = true }
+hydra-codegen = { workspace = true }
+anyhow = { workspace = true }
+serde_yaml = "0.9"

@@ -1,0 +1,185 @@
+{
+  "locations": {
+    "lines_changed": {
+      "owner": "query",
+      "provider": "query",
+      "repo": "query",
+      "since": "query",
+      "until": "query"
+    },
+    "list_commits": {
+      "owner": "query",
+      "provider": "query",
+      "repo": "query",
+      "since": "query",
+      "until": "query"
+    },
+    "list_contributors": {
+      "owner": "query",
+      "provider": "query",
+      "repo": "query",
+      "since": "query",
+      "until": "query"
+    },
+    "list_reviews": {
+      "owner": "query",
+      "provider": "query",
+      "repo": "query",
+      "since": "query",
+      "until": "query"
+    },
+    "provider_info": {}
+  },
+  "tools": [
+    {
+      "description": "Report the active provider adapter and its capabilities.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {},
+        "required": [],
+        "type": "object"
+      },
+      "name": "provider_info"
+    },
+    {
+      "description": "Per-contributor commit counts across the configured repos and time window.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "owner": {
+            "description": "Repository owner or namespace.",
+            "type": "string"
+          },
+          "provider": {
+            "description": "Provider id (github; gitlab and forgejo deferred).",
+            "type": "string"
+          },
+          "repo": {
+            "description": "Repository name.",
+            "type": "string"
+          },
+          "since": {
+            "description": "Lower bound (RFC 3339), inclusive.",
+            "type": "string"
+          },
+          "until": {
+            "description": "Upper bound (RFC 3339), exclusive.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "provider",
+          "owner",
+          "repo"
+        ],
+        "type": "object"
+      },
+      "name": "list_contributors"
+    },
+    {
+      "description": "Commits across the requested repo and time window.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "owner": {
+            "description": "Repository owner or namespace.",
+            "type": "string"
+          },
+          "provider": {
+            "description": "Provider id (github; gitlab and forgejo deferred).",
+            "type": "string"
+          },
+          "repo": {
+            "description": "Repository name.",
+            "type": "string"
+          },
+          "since": {
+            "description": "Lower bound (RFC 3339), inclusive.",
+            "type": "string"
+          },
+          "until": {
+            "description": "Upper bound (RFC 3339), exclusive.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "provider",
+          "owner",
+          "repo"
+        ],
+        "type": "object"
+      },
+      "name": "list_commits"
+    },
+    {
+      "description": "Aggregate lines added and removed over the window.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "owner": {
+            "description": "Repository owner or namespace.",
+            "type": "string"
+          },
+          "provider": {
+            "description": "Provider id (github; gitlab and forgejo deferred).",
+            "type": "string"
+          },
+          "repo": {
+            "description": "Repository name.",
+            "type": "string"
+          },
+          "since": {
+            "description": "Lower bound (RFC 3339), inclusive.",
+            "type": "string"
+          },
+          "until": {
+            "description": "Upper bound (RFC 3339), exclusive.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "provider",
+          "owner",
+          "repo"
+        ],
+        "type": "object"
+      },
+      "name": "lines_changed"
+    },
+    {
+      "description": "PR reviews across the requested repo and time window.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "owner": {
+            "description": "Repository owner or namespace.",
+            "type": "string"
+          },
+          "provider": {
+            "description": "Provider id (github; gitlab and forgejo deferred).",
+            "type": "string"
+          },
+          "repo": {
+            "description": "Repository name.",
+            "type": "string"
+          },
+          "since": {
+            "description": "Lower bound (RFC 3339), inclusive.",
+            "type": "string"
+          },
+          "until": {
+            "description": "Upper bound (RFC 3339), exclusive.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "provider",
+          "owner",
+          "repo"
+        ],
+        "type": "object"
+      },
+      "name": "list_reviews"
+    }
+  ]
+}

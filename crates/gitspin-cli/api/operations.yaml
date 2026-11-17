@@ -1,0 +1,142 @@
+# gitspin operations — single source of truth for CLI/HTTP/MCP projections.
+# Regenerate with: cd crates/gitspin-cli && cargo run -p hydra-codegen -- write
+# CI staleness gate: cargo run -p hydra-codegen -- check
+operations:
+  - name: provider_info
+    description: Report the active provider adapter and its capabilities.
+    method: GET
+    path: /provider
+    read: true
+    output_type: ProviderInfo
+
+  - name: list_contributors
+    description: Per-contributor commit counts across the configured repos and time window.
+    method: GET
+    path: /contributors
+    read: true
+    output_type: Vec<ContributorSummary>
+    parameters:
+      - name: provider
+        description: Provider id (github; gitlab and forgejo deferred).
+        type: string
+        required: true
+        location: query
+      - name: owner
+        description: Repository owner or namespace.
+        type: string
+        required: true
+        location: query
+      - name: repo
+        description: Repository name.
+        type: string
+        required: true
+        location: query
+      - name: since
+        description: Lower bound (RFC 3339), inclusive.
+        type: string
+        required: false
+        location: query
+      - name: until
+        description: Upper bound (RFC 3339), exclusive.
+        type: string
+        required: false
+        location: query
+
+  - name: list_commits
+    description: Commits across the requested repo and time window.
+    method: GET
+    path: /commits
+    read: true
+    output_type: Vec<CommitSummary>
+    parameters:
+      - name: provider
+        description: Provider id (github; gitlab and forgejo deferred).
+        type: string
+        required: true
+        location: query
+      - name: owner
+        description: Repository owner or namespace.
+        type: string
+        required: true
+        location: query
+      - name: repo
+        description: Repository name.
+        type: string
+        required: true
+        location: query
+      - name: since
+        description: Lower bound (RFC 3339), inclusive.
+        type: string
+        required: false
+        location: query
+      - name: until
+        description: Upper bound (RFC 3339), exclusive.
+        type: string
+        required: false
+        location: query
+
+  - name: lines_changed
+    description: Aggregate lines added and removed over the window.
+    method: GET
+    path: /lines-changed
+    read: true
+    output_type: LinesChanged
+    parameters:
+      - name: provider
+        description: Provider id (github; gitlab and forgejo deferred).
+        type: string
+        required: true
+        location: query
+      - name: owner
+        description: Repository owner or namespace.
+        type: string
+        required: true
+        location: query
+      - name: repo
+        description: Repository name.
+        type: string
+        required: true
+        location: query
+      - name: since
+        description: Lower bound (RFC 3339), inclusive.
+        type: string
+        required: false
+        location: query
+      - name: until
+        description: Upper bound (RFC 3339), exclusive.
+        type: string
+        required: false
+        location: query
+
+  - name: list_reviews
+    description: PR reviews across the requested repo and time window.
+    method: GET
+    path: /reviews
+    read: true
+    output_type: Vec<ReviewSummary>
+    parameters:
+      - name: provider
+        description: Provider id (github; gitlab and forgejo deferred).
+        type: string
+        required: true
+        location: query
+      - name: owner
+        description: Repository owner or namespace.
+        type: string
+        required: true
+        location: query
+      - name: repo
+        description: Repository name.
+        type: string
+        required: true
+        location: query
+      - name: since
+        description: Lower bound (RFC 3339), inclusive.
+        type: string
+        required: false
+        location: query
+      - name: until
+        description: Upper bound (RFC 3339), exclusive.
+        type: string
+        required: false
+        location: query

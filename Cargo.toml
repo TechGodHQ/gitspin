@@ -1,0 +1,40 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/gitspin-core",
+    "crates/gitspin-github",
+    "crates/gitspin-cli",
+    "crates/gitspin-codegen",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+repository = "https://github.com/TechGodHQ/gitspin"
+
+[workspace.dependencies]
+gitspin-core = { path = "crates/gitspin-core" }
+gitspin-github = { path = "crates/gitspin-github" }
+# Hydra is the sole projection mechanism (CLI/HTTP/MCP). Pinned to the
+# immutable published v0.3.0 tag.
+hydra-core = { git = "https://github.com/TechGodHQ/hydra", tag = "v0.3.0" }
+hydra-codegen = { git = "https://github.com/TechGodHQ/hydra", tag = "v0.3.0" }
+
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+anyhow = "1"
+thiserror = "2"
+async-trait = "0.1"
+tokio = { version = "1", features = ["full"] }
+axum = "0.8"
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+clap = { version = "4", features = ["derive", "env"] }
+
+[workspace.lints.clippy]
+all = { level = "warn", priority = -1 }
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true
