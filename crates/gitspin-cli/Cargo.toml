@@ -1,0 +1,36 @@
+[package]
+name = "gitspin-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "gitspin CLI: hydra-projected operations over provider-agnostic contribution data."
+publish = false
+
+[lints]
+workspace = true
+
+[[bin]]
+name = "gitspin"
+path = "src/main.rs"
+
+[[bin]]
+name = "gitspin-http"
+path = "src/bin/gitspin-http.rs"
+
+[dependencies]
+gitspin-core = { workspace = true }
+gitspin-github = { workspace = true }
+# Hydra projection lives in crates/gitspin-codegen (pinned hydra-core +
+# hydra-codegen at tag v0.3.0); generated artifacts are committed under
+# generated/ and gated by `check` in CI.
+async-trait = { workspace = true }
+axum = { workspace = true }
+clap = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+tokio = { workspace = true }
+anyhow = { workspace = true }
+
+[dev-dependencies]
+serde_yaml = "0.9"
